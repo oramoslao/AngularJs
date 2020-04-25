@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="MyApp">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AngularJS - Ejemplo</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="libs/angular/angular.min.js"></script>
     <script src="app/app.js"></script>
-</head>
-<body ng-controller="HomeCtr">
-    
-    <ul>
-        <li ng-repeat="user in users" ng-bind="$index + ' - ' + user.name"></li>
-    </ul>
-
-    <ul>
-        <li ng-repeat="user in users">{{ $index + ' - ' + user.name }}</li>
-    </ul>
-    
-
-</body>
+  </head>
+  <body ng-controller="HomeCtr">
+    <p full-name info="user">Mi nombre</p>
+    <p>
+      <h3>Drectiva como elemento</h1>
+      <full-name info="user"></full-name>
+    </p>
+  </body>
 </html>
