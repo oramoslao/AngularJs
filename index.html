@@ -9,21 +9,18 @@
     <script src="app/app.js"></script>
   </head>
   <body ng-controller="HomeCtr">
-    <p full-name info="user">Mi nombre</p>
-    <p>
-      <h3>Drectiva como elemento</h1>
-      <full-name info="user"></full-name>
-    </p>
-    <br>
-    <br>
-    <h3>Mi tiempo actual:</h3>
+    <h3>{{ 'Usuarios' | uppercase }}</h3>
+    <h3>{{ 'Usuarios' | lowercase }}</h3>
+    <p>{{ logText | limitTo: 80 }}...</p>
     <div>
-      Formato de fecha: <input type="text" ng-model="format" >
+      <input type="text" ng-model="search" placeholder="Buscar usuario..." />
     </div>
-    <hr>
-    <p>
-      Mi tiempo actual es: <span my-current-time="format"></span>
-    </p>
-
+    <ul>
+      <li
+        ng-repeat="user in users | limitTo: 10 | orderBy: '-age' | filter: search"
+      >
+        <full-name info="user"></full-name>
+      </li>
+    </ul>
   </body>
 </html>

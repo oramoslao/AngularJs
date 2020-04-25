@@ -5,14 +5,36 @@ myApp.controller("HomeCtr", HomeController);
 HomeController.$inject = ["$scope"];
 
 function HomeController($scope) {
-  $scope.user = {
-    name: "Octavio",
-    lastname: "Ramos La O",
-  };
-  $scope.format = "M/d/yy h:mm:ss a";
+  $scope.logText =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error aspernatur nobis rerum vero iste, sed provident, cum quod, doloribus ea consequatur eaque sequi nihil delectus totam maxime itaque voluptatibus.";
+  $scope.users = [
+    {
+      name: "Octavio",
+      lastname: "Ramos La O",
+      age: 37,
+      amount: 20.45,
+    },
+    {
+      name: "Raul",
+      lastname: "Junco",
+      age: 27,
+      amount: 10,
+    },
+    {
+      name: "Juan",
+      lastname: "Perez",
+      age: 17,
+      amount: 25,
+    },
+    {
+      name: "Maria",
+      lastname: "Ramirez",
+      age: 20,
+      amount: 80,
+    },
+  ];
 }
-//A: Atriburo
-//E: Elemento
+
 myApp.directive("fullName", function () {
   return {
     restrict: "AE",
@@ -22,36 +44,3 @@ myApp.directive("fullName", function () {
     },
   };
 });
-
-myApp.directive("myCurrentTime", [
-  "$interval",
-  "dateFilter",
-  function ($interval, dateFilter) {
-    return {
-      link: linkFnc,
-    };
-
-    function linkFnc(scope, element, attrs) {
-      var format, timeoutId;
-
-      function updateTime() {
-        element.text(dateFilter(new Date(), format));
-      }
-
-      scope.$watch(attrs.myCurrentTime, function (newValue, oldValue) {
-        format = newValue;
-        updateTime();
-      });
-
-      element.on("$destroy", function () {
-        $interval.cancel(timeoutId);
-      });
-
-      // iniciar el proceso de actualización de la interfaz de usuario;
-      // guardar el tiempo de espera Id para cancelar
-      timeoutId = $interval(function () {
-        updateTime();
-      }, 1000);
-    }
-  },
-]);
