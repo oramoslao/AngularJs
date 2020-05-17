@@ -1,12 +1,17 @@
-.Rojo{
-    color: red;
+.was-validated .custom-select.ng-invalid,
+.was-validated .form-control.ng-invalid,
+.was-validated .custom-select:invalid,
+.was-validated .form-control:invalid {
+  border-color: #dc3545;
 }
-.Verde{
-    color: green;
-}
-.Azul{
-    color: blue;
-}
-.Orange{
-    color: orange;
+
+.was-validated .custom-select.ng-invalid ~ .invalid-feedback,
+.was-validated .custom-select.ng-invalid ~ .invalid-tooltip,
+.was-validated .form-control.ng-invalid ~ .invalid-feedback,
+.was-validated .form-control.ng-invalid ~ .invalid-tooltip,
+.was-validated .custom-select:invalid ~ .invalid-feedback,
+.was-validated .custom-select:invalid ~ .invalid-tooltip,
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.was-validated .form-control:invalid ~ .invalid-tooltip {
+  display: block;
 }

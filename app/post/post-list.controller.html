@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="my-4">{{$ctrl.title}}</h1>
+
+      <div class="my-4">
+        <a href="#/posts/add" class="btn btn-primary" title="Add">
+          <i class="fa fa-plus"></i>
+        </a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col"><span class="sr-only">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="post in $ctrl.posts">
+            <th scope="row">{{post.id}}</th>
+            <td>{{post.title | limitTo: 15}}</td>
+            <td>{{post.body | limitTo: 30}}</td>
+            <td>
+              <a href="#/posts/{{post.id}}" class="btn btn-default" title="show">
+                <i class="fa fa-eye"></i>
+              </a>
+              <a href="#/posts/{{post.id}}/edit" class="btn btn-default" title="edit">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="" class="btn btn-default" title="delete">
+                <i class="fa fa-remove"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

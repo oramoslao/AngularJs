@@ -7,12 +7,18 @@
   <title>AngularJS - Ejemplo</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css" />
   <script src="libs/angular/angular.min.js"></script>
   <script src="libs/angular/angular-route.min.js"></script>
   <script src="app/app.module.js"></script>
   <script src="app/app.route.js"></script>
   <script src="app/home/home.controller.js"></script>
+  <script src="app/post/post-list.controller.js"></script>
+  <script src="app/post/post-show.controller.js"></script>
+  <script src="app/post/post-add.controller.js"></script>
+  <script src="app/post/post.service.js"></script>
   <script src="app/directives/route-active.directive.js"></script>
 </head>
 
@@ -30,7 +36,7 @@
             <a class="nav-link" href="#/home">Home</a>
           </li>
           <li class="nav-item" route-active="active">
-            <a class="nav-link" href="#/blog">Blog</a>
+            <a class="nav-link" href="#/posts">Posts</a>
           </li>
           <li class="nav-item" route-active="active">
             <a class="nav-link" href="#/about">About</a>

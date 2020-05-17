@@ -7,8 +7,20 @@ angular.module("App").config([
         templateUrl: "app/home/home.controller.html",
         controller: "HomeController",
       })
-      .when("/blog", {
-        templateUrl: "app/blog/blog.html",
+      .when("/posts", {
+        templateUrl: "app/post/post-list.controller.html",
+        controller: "PostListController",
+        controllerAs: "$ctrl",
+      })
+      .when("/posts/add", {
+        templateUrl: "app/post/post-add.controller.html",
+        controller: "PostAddController",
+        controllerAs: "$ctrl",
+      })
+      .when("/posts/:id", {
+        templateUrl: "app/post/post-show.controller.html",
+        controller: "PostShowController",
+        controllerAs: "$ctrl",
       })
       .when("/about", {
         templateUrl: "app/about/about.html",
