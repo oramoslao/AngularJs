@@ -1,8 +1,8 @@
-angular.module("App").controller("PostListController", PostListController);
+angular.module("App").controller("PostListController", PostAddController);
 
-PostListController.$inject = ["PostService"];
+PostAddController.$inject = ["PostService"];
 
-function PostListController(PostService) {
+function PostAddController(PostService) {
   var self = this;
 
   self.title = "Posts";
