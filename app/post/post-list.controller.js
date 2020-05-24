@@ -1,15 +1,27 @@
-angular.module("App").controller("PostListController", PostAddController);
+angular.module("App").controller("PostListController", PostListController);
 
-PostAddController.$inject = ["PostService"];
+PostListController.$inject = ["$scope", "PostService"];
 
-function PostAddController(PostService) {
+function PostListController($scope, PostService) {
   var self = this;
 
   self.title = "Posts";
   self.posts = [];
+  self.delete = deletePost;
 
-  PostService.getPosts().then(function (response) {
-    console.log(response);
-    self.posts = response.data || [];
-  });
+  loadPosts();
+
+  function deletePost(id) {
+    PostService.deletePost(id).then(function () {
+      loadPosts();
+    });
+  }
+
+  function loadPosts() {
+    PostService.getPosts().then(function (posts) {
+      $scope.$apply(function () {
+        self.posts = posts || [];
+      });
+    });
+  }
 }

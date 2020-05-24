@@ -17,6 +17,11 @@ angular.module("App").config([
         controller: "PostAddController",
         controllerAs: "$ctrl",
       })
+      .when("/posts/:id/edit", {
+        templateUrl: "app/post/post-edit.controller.html",
+        controller: "PostEditController",
+        controllerAs: "$ctrl",
+      })
       .when("/posts/:id", {
         templateUrl: "app/post/post-show.controller.html",
         controller: "PostShowController",

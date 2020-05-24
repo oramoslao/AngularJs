@@ -1,34 +1,46 @@
 angular.module("App").factory("PostService", PostService);
 
-PostService.$inject = ["$http"];
+PostService.$inject = [];
 
-function PostService($http) {
+function PostService() {
+  var collection = db.collection("posts");
+
   var service = {
     getPosts: getPosts,
     getPost: getPost,
     addPost: addPost,
+    updatePost: updatePost,
+    deletePost: deletePost,
   };
 
   return service;
 
   function addPost(post) {
-    var url = "https://jsonplaceholder.typicode.com/posts";
-    var data = {
-      title: post.title,
-      body: post.body,
-      userId: 1,
-    };
-
-    return $http.post(url, data);
+    return collection.add(post);
   }
 
   function getPosts() {
-    var url = "https://jsonplaceholder.typicode.com/posts";
-    return $http.get(url);
+    return collection.get().then(function (snapshot) {
+      return snapshot.docs.map((doc) => {
+        return angular.extend({}, { id: doc.id }, doc.data());
+      });
+    });
   }
 
   function getPost(id) {
-    var url = "https://jsonplaceholder.typicode.com/posts/" + id;
-    return $http.get(url);
+    return collection
+      .doc(id)
+      .get()
+      .then(function (doc) {
+        return angular.extend({}, { id: doc.id }, doc.data());
+      });
+  }
+
+  function updatePost(id, post) {
+    return collection.doc(id).update(post);
+  }
+
+  function deletePost(id) {
+    return collection.doc(id).delete();
   }
 }

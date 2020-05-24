@@ -10,16 +10,11 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css" />
-  <script src="libs/angular/angular.min.js"></script>
-  <script src="libs/angular/angular-route.min.js"></script>
-  <script src="app/app.module.js"></script>
-  <script src="app/app.route.js"></script>
-  <script src="app/home/home.controller.js"></script>
-  <script src="app/post/post-list.controller.js"></script>
-  <script src="app/post/post-show.controller.js"></script>
-  <script src="app/post/post-add.controller.js"></script>
-  <script src="app/post/post.service.js"></script>
-  <script src="app/directives/route-active.directive.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+
+
 </head>
 
 <body>
@@ -46,6 +41,37 @@
     </nav>
   </header>
   <main ng-view></main>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyB9mAEIDYimIj8YTCMFqJe2AA-FjloIikA",
+      authDomain: "angularjsdemo-e6fcc.firebaseapp.com",
+      databaseURL: "https://angularjsdemo-e6fcc.firebaseio.com",
+      projectId: "angularjsdemo-e6fcc",
+      storageBucket: "angularjsdemo-e6fcc.appspot.com",
+      messagingSenderId: "865636715654",
+      appId: "1:865636715654:web:5b147beb2378560fa01507"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+  </script>
+
+  <script src="libs/angular/angular.min.js"></script>
+  <script src="libs/angular/angular-route.min.js"></script>
+  <script src="app/app.module.js"></script>
+  <script src="app/app.route.js"></script>
+  <script src="app/home/home.controller.js"></script>
+  <script src="app/post/post-list.controller.js"></script>
+  <script src="app/post/post-show.controller.js"></script>
+  <script src="app/post/post-add.controller.js"></script>
+  <script src="app/post/post-edit.controller.js"></script>
+  <script src="app/post/post-form.component.js"></script>
+  <script src="app/post/post.service.js"></script>
+  <script src="app/directives/route-active.directive.js"></script>
+
+
 </body>
 
 </html>

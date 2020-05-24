@@ -1,15 +1,15 @@
 angular.module("App").controller("PostShowController", PostShowController);
 
-PostShowController.$inject = ["$routeParams", "PostService"];
+PostShowController.$inject = ["$scope", "$routeParams", "PostService"];
 
-function PostShowController($routeParams, PostService) {
+function PostShowController($scope, $routeParams, PostService) {
   var self = this;
   self.post = null;
 
-  console.log($routeParams);
-
-  PostService.getPost($routeParams.id).then(function (response) {
-    console.log(response);
-    self.post = response.data;
+  PostService.getPost($routeParams.id).then(function (post) {
+    console.log(post);
+    $scope.$apply(function () {
+      self.post = post;
+    });
   });
 }

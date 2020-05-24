@@ -1,21 +1,18 @@
 angular.module("App").controller("PostAddController", PostAddController);
 
-PostAddController.$inject = ["PostService"];
+PostAddController.$inject = ["$scope", "$location", "PostService"];
 
-function PostAddController(PostService) {
+function PostAddController($scope, $location, PostService) {
   var self = this;
 
   self.title = "Add Post";
-  self.post = {};
   self.submit = submit;
 
-  function submit() {
-    if (self.addForm.$invalid) return;
-
-    console.log(self.post);
-
-    PostService.addPost(self.post).then(function (response) {
-      console.log(response);
+  function submit(post) {
+    PostService.addPost(post).then(function () {
+      $scope.$apply(function () {
+        $location.path("posts");
+      });
     });
   }
 }

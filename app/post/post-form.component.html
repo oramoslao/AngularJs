@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="my-4">{{$ctrl.title}}</h1>
+      <form name="$ctrl.addForm" ng-submit="$ctrl.submit()" class="needs-validation" novalidate
+        ng-class="{'was-validated': $ctrl.addForm.$invalid && $ctrl.addForm.$submitted}">
+
+        <div class="form-group">
+          <label>Title <span class="text-danger">*</span></label>
+          <input ng-model="$ctrl.post.title" required type="text" name="title" class="form-control"
+            placeholder="Enter title">
+          <div class="invalid-feedback">Please entre title</div>
+        </div>
+        <div class="form-group">
+          <label>Body <span class="text-danger">*</span> </label>
+          <textarea ng-model="$ctrl.post.body" required name="body" cols="30" rows="10" class="form-control"
+            placeholder="Enter body"></textarea>
+          <div class="invalid-feedback">Please entre body</div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ $ctrl.isEdited ? 'Update' : "Add" }}</button>
+      </form>
+    </div>
+  </div>
+</div>
